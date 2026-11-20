@@ -1,0 +1,70 @@
+<header class="scrap-card p-4 md:px-6 mb-6 flex flex-wrap items-center justify-between gap-4">
+  <div class="flex items-center gap-3">
+    <span class="sticker-badge" aria-hidden="true">✦</span>
+    <div>
+      <p class="font-mono text-xs uppercase tracking-widest opacity-70">Anti-Overthinking Studio</p>
+      <h1 class="font-display text-2xl md:text-3xl font-bold tracking-tight">
+        WhiFate <span class="text-pink-500 dark:text-pink-400">Gacha & Tarot</span>
+      </h1>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+    <!-- Mode Switcher -->
+    <div class="mode-switch" role="tablist" aria-label="Pilih Mode Keputusan">
+      <button
+        id="modeGachaBtn"
+        type="button"
+        role="tab"
+        aria-selected="true"
+        data-mode="gacha"
+        class="mode-btn is-active"
+      >
+        🫧 Gacha
+      </button>
+      <button
+        id="modeTarotBtn"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode="tarot"
+        class="mode-btn"
+      >
+        🃏 Tarot
+      </button>
+    </div>
+
+    <!-- Crazy Mode Toggle -->
+    <button
+      id="crazyModeBtn"
+      type="button"
+      aria-pressed="false"
+      class="crazy-btn"
+      title="Aktifkan/Matikan Crazy Mode"
+    >
+      🔥 Crazy: OFF
+    </button>
+
+    <!-- Sound Mute Toggle -->
+    <button
+      id="soundToggleBtn"
+      type="button"
+      class="icon-btn"
+      aria-label="Toggle Efek Suara"
+      title="Suara Aktif"
+    >
+      🔊
+    </button>
+
+    <!-- Dark / Light Theme Toggle -->
+    <button
+      id="themeToggleBtn"
+      type="button"
+      class="icon-btn"
+      aria-label="Toggle Tema Gelap atau Terang"
+      title="Ganti Tema"
+    >
+      🌙
+    </button>
+  </div>
+</header>

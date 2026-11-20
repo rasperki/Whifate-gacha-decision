@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhiFate Decision Maker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="min-h-screen transition-colors duration-300 selection:bg-pink-300/60">
+  <div class="max-w-6xl mx-auto px-4 py-6 md:py-10">
+    <!-- Link Section Header -->
+    <div id="slot-header" data-section="sections/header.html"></div>
+
+    <!-- Main 2-Column Layout -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Link Section Panel Opsi -->
+      <div id="slot-options" class="lg:col-span-5" data-section="sections/options-panel.html"></div>
+
+      <!-- Stage Kanan -->
+      <section class="lg:col-span-7 scrap-card p-5 md:p-7 space-y-6" aria-label="Stage Interaktif">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest opacity-65">Active</span>
+            <h2 id="activeDeckTitle" class="font-display text-xl md:text-2xl font-bold">
+              Makan Apa Hari Ini?
+            </h2>
+          </div>
+          <span id="stageModeLabel" class="font-mono text-xs px-3 py-1 rounded-full border border-current/20">
+            MODE: GACHA CAPSULE
+          </span>
+        </div>
+
+        <!-- Link Section Mode Gacha & Tarot -->
+        <div id="slot-stage" data-section="sections/stage-panel.html"></div>
+
+        <!-- Link Section Hasil & Reroll -->
+        <div id="slot-result" data-section="sections/result-section.html"></div>
+      </section>
+    </main>
+  </div>
+
+  <aside class="lofi-player" aria-label="Pemutar lagu lofi">
+    <button id="lofiPlayBtn" type="button" class="lofi-turntable" aria-label="Putar lagu lofi" aria-pressed="false">
+      <span class="turntable-platter">
+        <span class="lofi-record">
+          <span class="lofi-center">WF</span>
+        </span>
+      </span>
+      <span class="turntable-tonearm"><span></span></span>
+      <span class="turntable-speaker"></span>
+      <span class="turntable-knob turntable-knob-one"></span>
+      <span class="turntable-knob turntable-knob-two"></span>
+    </button>
+    <div class="lofi-info">
+      <span class="lofi-kicker">Whimsy Radio</span>
+      <strong id="lofiTitle">Lofi Orbit</strong>
+      <span id="lofiStatus" class="lofi-status">Tekan vinyl untuk putar</span>
+    </div>
+  </aside>
+
+  <div id="adminGateModal" class="admin-modal hidden" role="dialog" aria-modal="true" aria-labelledby="adminGateTitle">
+    <div class="admin-modal-card scrap-card p-5 md:p-6">
+      <button id="closeAdminGateBtn" type="button" class="icon-btn float-right" aria-label="Tutup">✕</button>
+      <p class="font-mono text-xs uppercase tracking-widest opacity-65">Riddle Pengawal Admin</p>
+      <h2 id="adminGateTitle" class="font-display text-xl font-bold mt-1">Jawab dulu ya...</h2>
+      <p id="adminRiddleText" class="mt-4 text-sm leading-relaxed"></p>
+      <form id="adminRiddleForm" class="mt-4 flex gap-2">
+        <input id="adminRiddleAnswer" type="text" class="whimsy-input flex-1 text-sm" autocomplete="off" placeholder="Jawaban riddle..." />
+        <button type="submit" class="whimsy-btn whimsy-btn-primary text-sm">Masuk</button>
+      </form>
+      <p id="adminRiddleStatus" class="font-mono text-xs min-h-4 mt-3" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

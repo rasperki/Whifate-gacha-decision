@@ -1,0 +1,48 @@
+<!-- MODE 1: GACHA CAPSULE MACHINE -->
+<div id="gachaStage" class="stage-panel flex flex-col items-center justify-center py-4">
+  <div class="gacha-machine">
+    <!-- Glass Dome -->
+    <div class="gacha-dome">
+      <div id="gachaBallsContainer" class="gacha-balls" aria-hidden="true"></div>
+      <div class="dome-shine" aria-hidden="true"></div>
+    </div>
+
+    <!-- Base & Lever -->
+    <div class="gacha-base">
+      <div class="gacha-chute" aria-hidden="true">
+        <div id="droppedCapsule" class="dropped-capsule hidden"></div>
+      </div>
+      <button
+        id="gachaSpinBtn"
+        type="button"
+        class="gacha-knob"
+        aria-label="Putar Mesin Gacha"
+        title="Klik untuk memutar kapsul!"
+      >
+        <span class="knob-bar"></span>
+        <span class="sr-only">Putar</span>
+      </button>
+    </div>
+  </div>
+
+  <p id="gachaHint" class="mt-4 font-mono text-xs opacity-75 text-center">
+    Klik tombol putar untuk menjatuhkan kapsul keberuntungan!
+  </p>
+</div>
+
+<!-- MODE 2: TAROT CARDS STAGE -->
+<div id="tarotStage" class="stage-panel hidden flex-col items-center justify-center py-4 space-y-5">
+  <div class="flex flex-wrap items-center justify-center gap-3">
+    <button id="tarotShuffleBtn" type="button" class="whimsy-btn whimsy-btn-secondary text-sm">
+      🔀 Kocok & Sebar Kartu
+    </button>
+  </div>
+
+  <div id="tarotSpreadContainer" class="tarot-spread" aria-label="Sebaran Kartu Tarot">
+    <!-- Kartu tarot digenerate oleh tarot.js -->
+  </div>
+
+  <p id="tarotHint" class="font-mono text-xs opacity-75 text-center">
+    Klik salah satu kartu yang paling "memanggil" instingmu untuk membaliknya.
+  </p>
+</div>

@@ -1,0 +1,806 @@
+/* =========================================================
+   WHIMSY SCRAPBOOK THEME TOKENS (LIGHT & DARK MODE)
+   ========================================================= */
+:root {
+  --bg-canvas: #fdf6ec;
+  --bg-dots: #e8d8c3;
+  --bg-card: #fffdf9;
+  --bg-elevated: #f7ebd9;
+  --text-main: #2b2320;
+  --text-muted: #6b5c55;
+  --border-ink: #2b2320;
+  --accent-pink: #ff7eb6;
+  --accent-mint: #7be0ad;
+  --accent-butter: #ffd166;
+  --accent-lavender: #b8a9ff;
+  --shadow-hard: 4px 4px 0px #2b2320;
+  --shadow-soft: 0 10px 25px -10px rgba(43, 35, 32, 0.16);
+}
+
+html[data-theme="dark"] {
+  --bg-canvas: #191624;
+  --bg-dots: #2b253d;
+  --bg-card: #221e31;
+  --bg-elevated: #2c2740;
+  --text-main: #f6effc;
+  --text-muted: #b6aac9;
+  --border-ink: #0e0b16;
+  --accent-pink: #ff69ab;
+  --accent-mint: #57cfa0;
+  --accent-butter: #f4be52;
+  --accent-lavender: #9c88ff;
+  --shadow-hard: 4px 4px 0px #0e0b16;
+  --shadow-soft: 0 12px 28px -10px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-canvas);
+  background-image: radial-gradient(var(--bg-dots) 1.35px, transparent 1.35px);
+  background-size: 22px 22px;
+}
+
+.font-display {
+  font-family: "Fredoka", sans-serif;
+}
+
+.font-mono {
+  font-family: "Space Mono", monospace;
+}
+
+/* =========================================================
+   SCRAPBOOK CARDS, STICKERS & TACTILE BUTTONS
+   ========================================================= */
+.scrap-card {
+  background-color: var(--bg-card);
+  border: 2.5px solid var(--border-ink);
+  border-radius: 22px;
+  box-shadow: var(--shadow-hard);
+  position: relative;
+}
+
+.sticker-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--accent-butter);
+  color: #2b2320;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: 2px solid var(--border-ink);
+  box-shadow: 2px 2px 0px var(--border-ink);
+  transform: rotate(-6deg);
+}
+
+.whimsy-input {
+  background-color: var(--bg-elevated);
+  color: var(--text-main);
+  border: 2px solid var(--border-ink);
+  border-radius: 14px;
+  padding: 0.6rem 0.85rem;
+  outline: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.whimsy-input:focus {
+  box-shadow: 2px 2px 0px var(--border-ink);
+  transform: translate(-1px, -1px);
+}
+
+.whimsy-btn {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  border: 2px solid var(--border-ink);
+  border-radius: 14px;
+  padding: 0.55rem 1rem;
+  box-shadow: 3px 3px 0px var(--border-ink);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.15s ease;
+}
+
+.whimsy-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--border-ink);
+  filter: brightness(1.03);
+}
+
+.whimsy-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--border-ink);
+}
+
+.whimsy-btn-primary {
+  background-color: var(--accent-pink);
+  color: #23191e;
+}
+
+.whimsy-btn-secondary {
+  background-color: var(--accent-butter);
+  color: #23191e;
+}
+
+.whimsy-btn-accent {
+  background-color: var(--accent-mint);
+  color: #182620;
+}
+
+.whimsy-btn-ghost {
+  background-color: var(--bg-elevated);
+  color: var(--text-main);
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 2px solid var(--border-ink);
+  background-color: var(--bg-elevated);
+  box-shadow: 2px 2px 0px var(--border-ink);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.icon-btn:active {
+  transform: translate(2px, 2px);
+}
+
+/* Mode Switcher */
+.mode-switch {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  border-radius: 14px;
+  border: 2px solid var(--border-ink);
+  background-color: var(--bg-elevated);
+}
+
+.mode-btn {
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mode-btn.is-active {
+  background-color: var(--accent-lavender);
+  color: #1e1933;
+  box-shadow: 1.5px 1.5px 0px var(--border-ink);
+}
+
+/* =========================================================
+   MODE 1: GACHA CAPSULE MACHINE
+   ========================================================= */
+.gacha-machine {
+  position: relative;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gacha-crazy-spark {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px currentColor;
+}
+
+.gacha-dome {
+  width: 210px;
+  height: 190px;
+  border-radius: 105px 105px 36px 36px;
+  border: 3px solid var(--border-ink);
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.65), rgba(210, 238, 255, 0.28) 65%, rgba(184, 169, 255, 0.22));
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dome-shine {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  width: 42px;
+  height: 85px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  transform: rotate(-22deg);
+  pointer-events: none;
+}
+
+.gacha-balls {
+  position: absolute;
+  inset: 0;
+}
+
+.gacha-ball {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--border-ink);
+  box-shadow: inset -4px -4px 6px rgba(0, 0, 0, 0.16), inset 3px 3px 5px rgba(255, 255, 255, 0.55);
+}
+
+.gacha-base {
+  width: 230px;
+  background-color: var(--accent-pink);
+  border: 3px solid var(--border-ink);
+  border-radius: 22px 22px 28px 28px;
+  margin-top: -6px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-hard);
+}
+
+.gacha-chute {
+  width: 72px;
+  height: 62px;
+  border-radius: 14px;
+  border: 2.5px solid var(--border-ink);
+  background-color: var(--bg-card);
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropped-capsule {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid var(--border-ink);
+  background: linear-gradient(180deg, var(--accent-butter) 50%, var(--bg-card) 50%);
+}
+
+.gacha-knob {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 3px solid var(--border-ink);
+  background-color: var(--accent-butter);
+  box-shadow: 3px 3px 0px var(--border-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.knob-bar {
+  width: 40px;
+  height: 10px;
+  border-radius: 999px;
+  border: 2px solid var(--border-ink);
+  background-color: var(--bg-card);
+}
+
+/* =========================================================
+   MODE 2: TAROT 3D FLIP CARDS
+   ========================================================= */
+.tarot-spread {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  min-height: 195px;
+}
+
+.tarot-card-slot {
+  width: 112px;
+  height: 172px;
+  perspective: 900px;
+  cursor: pointer;
+}
+
+.tarot-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tarot-card-slot.is-flipped .tarot-card-inner {
+  transform: rotateY(180deg);
+}
+
+.tarot-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  border: 2.5px solid var(--border-ink);
+  box-shadow: 3px 3px 0px var(--border-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+}
+
+.tarot-back {
+  background-color: var(--accent-lavender);
+  color: #1e1933;
+  background-image: radial-gradient(rgba(30, 25, 51, 0.18) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.tarot-front {
+  background-color: var(--bg-elevated);
+  color: var(--text-main);
+  transform: rotateY(180deg);
+}
+
+/* =========================================================
+   RESULT TICKET CARD
+   ========================================================= */
+.result-ticket {
+  border: 2px dashed var(--border-ink);
+  border-radius: 18px;
+  background-color: var(--bg-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+
+
+/* =========================================================
+   DARK MODE POLISH & CRAZY MODE STYLES
+   ========================================================= */
+html[data-theme="dark"] .scrap-card {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.025) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+html[data-theme="dark"] .gacha-dome {
+  background: radial-gradient(
+    circle at 30% 25%,
+    rgba(255, 255, 255, 0.24),
+    rgba(156, 136, 255, 0.14) 65%,
+    rgba(255, 105, 171, 0.12)
+  );
+}
+
+.crazy-btn {
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.42rem 0.8rem;
+  border-radius: 13px;
+  border: 2px solid var(--border-ink);
+  background-color: var(--bg-elevated);
+  color: var(--text-main);
+  box-shadow: 2px 2px 0px var(--border-ink);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
+}
+
+.crazy-btn:active {
+  transform: translate(2px, 2px);
+}
+
+.crazy-btn.is-crazy-active {
+  background: linear-gradient(135deg, #ff5e9e, #ffd166, #7be0ad);
+  color: #1c1418;
+  box-shadow: 3px 3px 0px var(--border-ink);
+  animation: crazyPulse 0.9s infinite alternate ease-in-out;
+}
+
+@keyframes crazyPulse {
+  0% {
+    transform: rotate(-1.5deg) scale(1);
+  }
+  100% {
+    transform: rotate(1.5deg) scale(1.04);
+  }
+}
+
+body.is-crazy .scrap-card {
+  border-color: #ff5e9e;
+}
+
+html[data-theme="dark"] body.is-crazy .scrap-card {
+  border-color: #ff79b8;
+  box-shadow: 4px 4px 0px #ff79b8;
+}
+
+body.is-crazy .result-ticket {
+  border-style: solid;
+  border-width: 2.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 126, 182, 0.18),
+    rgba(255, 209, 102, 0.18),
+    rgba(123, 224, 173, 0.18)
+  );
+}
+
+body.is-crazy .tarot-back {
+  color: #24132f;
+  background-color: #ff46a2;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.62) 2px, transparent 2.5px),
+    repeating-linear-gradient(45deg, rgba(0, 229, 255, 0.34) 0 5px, transparent 5px 12px),
+    linear-gradient(135deg, #ff46a2, #ffe600 52%, #48ffaf);
+  background-size: 15px 15px, auto, auto;
+  box-shadow: 4px 4px 0 #ff46a2, 0 0 18px rgba(255, 70, 162, 0.3);
+}
+
+body.is-crazy .tarot-front {
+  background: linear-gradient(145deg, #fff07a, #ff9be0 58%, #9bf7ff);
+  color: #24132f;
+  border-color: #24132f;
+}
+
+body.is-crazy .tarot-card-slot:not(.is-flipped):hover .tarot-card-inner {
+  transform: translateY(-7px) rotate(-2deg);
+}
+
+body.is-crazy .gacha-dome {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.6), transparent 55%),
+    linear-gradient(135deg, rgba(255, 70, 162, 0.35), rgba(0, 229, 255, 0.32), rgba(255, 230, 0, 0.28));
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.08), 0 0 22px rgba(255, 70, 162, 0.28);
+}
+
+body.is-crazy .gacha-base {
+  background: linear-gradient(120deg, #ff46a2, #a855f7 50%, #00d9f5);
+}
+
+body.is-crazy .gacha-knob {
+  background: linear-gradient(135deg, #ffe600, #ff8a36);
+  animation: crazyKnobPulse 0.75s ease-in-out infinite alternate;
+}
+
+body.is-crazy .gacha-ball {
+  box-shadow:
+    inset -4px -4px 6px rgba(0, 0, 0, 0.19),
+    inset 3px 3px 5px rgba(255, 255, 255, 0.7),
+    0 0 9px rgba(255, 255, 255, 0.45);
+}
+
+body.is-crazy .dropped-capsule {
+  border-color: #24132f;
+  box-shadow: 0 0 14px rgba(255, 230, 0, 0.75);
+}
+
+body.is-crazy .gacha-machine.is-crazy-spinning {
+  animation: gachaRumble 0.09s infinite alternate ease-in-out;
+}
+
+body.is-crazy .gacha-machine.is-crazy-spinning .gacha-dome {
+  box-shadow:
+    inset 0 -10px 20px rgba(0, 0, 0, 0.08),
+    0 0 30px rgba(255, 70, 162, 0.72);
+}
+
+@keyframes gachaRumble {
+  from {
+    transform: translateX(-6px) rotate(-2deg);
+  }
+  to {
+    transform: translateX(6px) rotate(2deg);
+  }
+}
+
+@keyframes crazyKnobPulse {
+  to {
+    filter: hue-rotate(35deg) saturate(1.35);
+    box-shadow: 3px 3px 0 var(--border-ink), 0 0 14px rgba(255, 230, 0, 0.65);
+  }
+}
+
+.lofi-player {
+  position: fixed;
+  z-index: 40;
+  left: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: calc(100vw - 24px);
+  padding: 9px;
+  border: 2.5px solid var(--border-ink);
+  border-radius: 21px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.5), transparent 55%),
+    var(--bg-card);
+  box-shadow: var(--shadow-hard);
+}
+
+.lofi-turntable {
+  position: relative;
+  display: block;
+  width: 178px;
+  height: 104px;
+  flex: 0 0 178px;
+  overflow: hidden;
+  border: 3px solid #392d2b;
+  border-radius: 15px;
+  cursor: pointer;
+  background: linear-gradient(145deg, #fff4d2, #eddaa9 72%, #d2b87e);
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.56), inset 0 -5px 9px rgba(80, 52, 23, 0.18);
+}
+
+.turntable-platter {
+  position: absolute;
+  left: 6px;
+  top: 5px;
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  border: 4px solid #2981a3;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #38a0c4 0 2px, #277b9d 3px 5px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45), inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+
+.lofi-record {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: block;
+  border: 1px solid #14151a;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 13px, rgba(255, 255, 255, 0.14) 14px, transparent 15px 20px, rgba(255, 255, 255, 0.1) 21px, transparent 22px 27px, rgba(255, 255, 255, 0.1) 28px, transparent 29px),
+    radial-gradient(circle at 34% 28%, #45434c, #111217 63%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+}
+
+.lofi-turntable.is-playing .lofi-record {
+  animation: lofiSpin 2.2s linear infinite;
+}
+
+.lofi-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #c83e69;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #ed6b8c;
+  color: #52213a;
+  font: 700 7px "Space Mono", monospace;
+  letter-spacing: -0.08em;
+}
+
+.turntable-tonearm {
+  position: absolute;
+  z-index: 2;
+  width: 5px;
+  height: 58px;
+  top: 10px;
+  left: 110px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fff9e8, #b9a875);
+  box-shadow: 1px 1px 2px rgba(53, 38, 19, 0.45);
+  transform: rotate(38deg);
+  transform-origin: 50% 7px;
+}
+
+.turntable-tonearm::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: -4px;
+  left: -5px;
+  border: 3px solid #e8d8a8;
+  border-radius: 50%;
+  background: #fff3d4;
+  box-shadow: 0 1px 2px rgba(53, 38, 19, 0.45);
+}
+
+.turntable-tonearm span {
+  position: absolute;
+  width: 11px;
+  height: 8px;
+  left: -3px;
+  bottom: -3px;
+  border-radius: 3px 3px 6px 6px;
+  background: #fff1ca;
+  box-shadow: 0 1px 2px rgba(53, 38, 19, 0.45);
+}
+
+.turntable-speaker {
+  position: absolute;
+  top: 22px;
+  right: 7px;
+  width: 34px;
+  height: 43px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(to bottom, #5b5140 0 2px, transparent 2px 5px);
+  opacity: 0.85;
+}
+
+.turntable-knob {
+  position: absolute;
+  right: 12px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #9c8050;
+  border-radius: 50%;
+  background: #fff3d4;
+  box-shadow: 0 1px 1px rgba(53, 38, 19, 0.35);
+}
+
+.turntable-knob-one {
+  bottom: 17px;
+}
+
+.turntable-knob-two {
+  bottom: 4px;
+  right: 27px;
+  width: 8px;
+  height: 8px;
+}
+
+.lofi-turntable:focus-visible {
+  outline: 3px solid var(--accent-lavender);
+  outline-offset: 3px;
+}
+
+.lofi-turntable.is-playing .turntable-tonearm {
+  animation: tonearmPlay 0.45s ease-out forwards;
+}
+
+@keyframes tonearmPlay {
+  to {
+    transform: rotate(49deg);
+  }
+}
+
+.lofi-turntable.is-playing::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  left: 39px;
+  top: 25px;
+  border-radius: 50%;
+  background: #ffe66d;
+  box-shadow: 0 0 9px #ffe66d;
+}
+
+.lofi-info {
+  display: grid;
+  min-width: 128px;
+  line-height: 1.12;
+}
+
+.lofi-kicker {
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+}
+
+.lofi-info strong {
+  font-family: "Fredoka", sans-serif;
+  font-size: 15px;
+  margin: 2px 0;
+}
+
+.lofi-status {
+  font-size: 10px;
+  opacity: 0.72;
+}
+
+@keyframes lofiSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .lofi-player {
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .lofi-player {
+    gap: 8px;
+    padding: 7px;
+  }
+
+  .lofi-turntable {
+    width: 150px;
+    height: 92px;
+    flex-basis: 150px;
+  }
+
+  .turntable-platter {
+    left: 4px;
+    top: 3px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .lofi-record {
+    width: 66px;
+    height: 66px;
+  }
+
+  .turntable-tonearm {
+    left: 96px;
+    top: 7px;
+    height: 54px;
+  }
+
+  .turntable-speaker {
+    right: 5px;
+    top: 18px;
+    width: 27px;
+    height: 38px;
+  }
+
+  .turntable-knob-one {
+    right: 9px;
+    bottom: 14px;
+  }
+
+  .lofi-info {
+    min-width: 94px;
+  }
+}
+
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(43, 35, 32, 0.55);
+  backdrop-filter: blur(5px);
+}
+
+.admin-modal.hidden {
+  display: none;
+}
+
+.admin-modal-card {
+  width: min(440px, 100%);
+}
